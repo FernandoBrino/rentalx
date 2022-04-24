@@ -32,6 +32,7 @@ class ImportCategoryUseCase {
                 })
                 // read line by line
                 .on("end", () => {
+                    fs.promises.unlink(file.path); // remove o arquivo
                     resolve(categories); // when all parse have finished put into resolve, categories
                 })
                 .on("error", (err) => {
